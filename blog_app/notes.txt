@@ -31,9 +31,9 @@ These are just the basic requirements, and you can add more features depending o
 # list blogs
 # crud on blogs
 
+side bar
 landing page
 styling
 title section
 profile page content
-side bar
-add tag field to blog
+# add tag field to blog
