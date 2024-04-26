@@ -1,7 +1,7 @@
-<form method="post" action="{% url 'users:logout' %}">
-    {% csrf_token %}
-    <button type="submit">LOGOUT</button>
-</form>
+{% extends './../base.html' %}
+
+{% block content %}
 
 
 <h1>WELCOME {{request.user}}</h1>
+{% endblock content %}
