@@ -31,6 +31,7 @@ These are just the basic requirements, and you can add more features depending o
 # list blogs
 # crud on blogs
 
+blog detail
 side bar
 landing page
 styling

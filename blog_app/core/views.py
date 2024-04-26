@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.shortcuts import render
+from blogs import models
 
 
 def landing(request):
@@ -6,4 +8,5 @@ def landing(request):
 
 
 def home(request):
-    return render(request, "core/index.html")
+    blogs = models.Blog.objects.all()
+    return render(request, "core/index.html", {"blogs": blogs})
