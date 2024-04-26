@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>All Blogs</h1>
-  <ul>
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold mb-8">All Blogs</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
     {% for blog in blogs %}
-      <li>
-        <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
-        <a href="{% url 'blogs:blog-detail' blog.slug %}">{{ blog.title }}</a>
-        <ul>
-          {% for comment in blog.first_three_comments %}
-            <li>{{ comment.content }}</li>
-          {% endfor %}
-        </ul>
-      </li>
+      <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <img class="w-full" src="{{ blog.image.url }}" alt="{{ blog.title }}">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">{{ blog.title }}</div>
+          <ul class="text-gray-700 text-base">
+            {% for comment in blog.first_three_comments %}
+              <li>{{ comment.content }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
     {% endfor %}
-  </ul>
+  </div>
+</div>
 {% endblock %}

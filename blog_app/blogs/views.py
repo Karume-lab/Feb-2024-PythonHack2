@@ -18,8 +18,9 @@ class BlogListView(ListView):
     def get_queryset(self):
         queryset = super().get_queryset().prefetch_related("comment_set")
         for blog in queryset:
-            blog.first_three_comments = models.Comment.objects.filter(blog=blog)[:3]
+            blog.first_three_comments = blog.comment_set.all()[:3]
         return queryset
+
 
 class BlogDetailView(LoginRequiredMixin, DetailView):
     model = models.Blog
