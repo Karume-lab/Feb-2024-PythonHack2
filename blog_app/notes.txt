@@ -22,3 +22,13 @@ Here are the functional requirements of a basic blog website:
 * Static Pages: The website can allow creation and management of static pages (e.g., About Us, Contact). These pages provide important information about the blog and the blogger.
 
 These are just the basic requirements, and you can add more features depending on your specific needs. For instance, you might want to include social media sharing buttons, a newsletter signup form, or analytics tracking.
+
+
+
+
+authentication
+blogs
+list blogs
+crud on blogs
+landing page
+styling
