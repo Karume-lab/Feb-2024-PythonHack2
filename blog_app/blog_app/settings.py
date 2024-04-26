@@ -143,11 +143,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 COMPRESS_ROOT = BASE_DIR / "static"
 COMPRESS_ENABLED = True
-STATICFILES_FINDER = (
+STATICFILES_FINDERS = (
     "compressor.finders.CompressorFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
 
 
+LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = "core:home"
 LOGOUT_REDIRECT_URL = "users:logout"
