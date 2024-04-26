@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # THIRD PARTY APPS
     "compressor",
     "livereload",
+    "ckeditor",
     # MY APPS
     "users",
     "blogs",
@@ -149,6 +150,6 @@ STATICFILES_FINDERS = (
 )
 
 
-LOGIN_URL = 'users:login'
+LOGIN_URL = "users:login"
 LOGIN_REDIRECT_URL = "core:home"
 LOGOUT_REDIRECT_URL = "users:logout"

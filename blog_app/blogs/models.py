@@ -1,12 +1,13 @@
 from django.db import models
 from django.utils import timezone
-from django.template.defaultfilters import slugify
+from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 
 class Blog(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    content = RichTextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="media/blog_images/", null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
