@@ -1,0 +1,21 @@
+{% load static %}
+
+<nav class="bg-gray-800 py-4">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+        <img class="w-20" src="{% static 'img/logo.png' %}" alt="">
+        <div class="flex space-x-4">
+            <a href="#" class="text-white hover:text-gray-300">Home</a>
+            <a href="#" class="text-white hover:text-gray-300">Discover</a>
+
+        </div>
+        <div class="flex items-center justify-center gap-3">
+            <form method="post" action="{% url 'users:logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                    Logout
+                </button>
+            </form>
+            <a href="#" class="text-white hover:text-gray-300">Profile</a>
+        </div>
+    </div>
+</nav>
