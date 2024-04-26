@@ -36,6 +36,6 @@ These are just the basic requirements, and you can add more features depending o
 
 
 title section
-side bar
+# side bar
 landing page
 profile page content

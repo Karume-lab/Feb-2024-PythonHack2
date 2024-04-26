@@ -1,32 +1,38 @@
 {% extends './../base.html' %}
 
+{% block title %}
+Me
+{% endblock title %}
+
 {% block content %}
-<div class="container mx-auto px-4 py-8">
-    <div class="max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden">
-        <div class="sm:flex sm:items-center px-6 py-4">
-            <img class="block mx-auto sm:mx-0 sm:flex-shrink-0 h-16 sm:h-24 rounded-full"
-                src="{{ user.profile_picture.url }}" alt="Profile Picture" />
-            <div class="mt-4 sm:mt-0 sm:ml-4 text-center sm:text-left">
-                <h2 class="text-xl font-semibold text-gray-800">{{ user.username }}</h2>
-                <p class="text-gray-600">{{ user.email }}</p>
-                <p class="text-gray-600">
-                    Joined: {{ user.date_joined|date:"F d, Y" }}
-                </p>
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="mx-auto px-4 py-8">
+        <div class="max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="sm:flex sm:items-center px-6 py-4">
+                <img class="block h-16 sm:h-24 rounded-full" src="{{ user.profile_picture.url }}"
+                    alt="Profile Picture" />
+                <div class="mt-4 sm:mt-0 sm:ml-4 text-center sm:text-left">
+                    <h2 class="text-xl font-semibold text-gray-800">{{ user.username }}</h2>
+                    <p class="text-gray-600">{{ user.email }}</p>
+                    <p class="text-gray-600">
+                        Joined: {{ user.date_joined|date:"F d, Y" }}
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="border-t border-gray-200 px-6 py-4">
-            <h3 class="text-lg font-semibold text-gray-800">About Me</h3>
-            <p class="text-gray-600">{{ user.profile.bio }}</p>
-        </div>
-        <div class="border-t border-gray-200 px-6 py-4">
-            <h3 class="text-lg font-semibold text-gray-800">Blogs Published</h3>
-            <ul class="text-gray-600">
-                {% for blog in user.blog_set.all %}
-                <li>
-                    <a href="{% url 'blogs:blog-detail' blog.slug %}" class="underline">{{ blog.title }}</a>
-                </li>
-                {% endfor %}
-            </ul>
+            <div class="border-t border-gray-200 px-6 py-4">
+                <h3 class="text-lg font-semibold text-gray-800">About Me</h3>
+                <p class="text-gray-600">{{ user.profile.bio }}</p>
+            </div>
+            <div class="border-t border-gray-200 px-6 py-4">
+                <h3 class="text-lg font-semibold text-gray-800">Blogs Published</h3>
+                <ul class="text-gray-600">
+                    {% for blog in user.blog_set.all %}
+                    <li>
+                        <a href="{% url 'blogs:blog-detail' blog.slug %}" class="underline">{{ blog.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 </div>
