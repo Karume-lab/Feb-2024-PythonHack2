@@ -35,7 +35,7 @@ These are just the basic requirements, and you can add more features depending o
 # add tag field to blog
 
 
-title section
+# title section
 # side bar
 landing page
 profile page content
