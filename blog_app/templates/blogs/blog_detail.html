@@ -34,13 +34,5 @@
         <button type="submit" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Add
             Comment</button>
     </form>
-
-    <form action="{% url 'blogs:rating-create' blog.slug %}" method="post" class="mb-4">
-        {% csrf_token %}
-        <input type="number" name="rating" min="1" max="5"
-            class="w-16 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Rating">
-        <button type="submit" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Rate</button>
-    </form>
 </div>
 {% endblock content %}

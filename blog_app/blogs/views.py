@@ -62,15 +62,3 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         form.instance.blog = models.Blog.objects.get(slug=self.kwargs["slug"])
         return super().form_valid(form)
-
-
-class RatingCreateView(LoginRequiredMixin, CreateView):
-    model = models.Rating
-    template_name = "blogs/rating_form.html"
-    fields = ["rating"]
-    success_url = reverse_lazy("blogs:blog-list")
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        form.instance.blog = models.Blog.objects.get(slug=self.kwargs["slug"])
-        return super().form_valid(form)

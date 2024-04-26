@@ -18,7 +18,4 @@ urlpatterns = [
         views.CommentCreateView.as_view(),
         name="comment-create",
     ),
-    path(
-        "<slug:slug>/rate/", views.RatingCreateView.as_view(), name="rating-create"
-    ),
 ]
