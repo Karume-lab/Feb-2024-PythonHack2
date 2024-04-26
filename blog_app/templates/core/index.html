@@ -1,2 +1,7 @@
-<a href="{% url 'users:logout' %}">LOGOUT</a>
-WELCOME
+<form method="post" action="{% url 'users:logout' %}">
+    {% csrf_token %}
+    <button type="submit">LOGOUT</button>
+</form>
+
+
+<h1>WELCOME {{request.user}}</h1>

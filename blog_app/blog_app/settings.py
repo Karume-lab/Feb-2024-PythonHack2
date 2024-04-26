@@ -135,4 +135,4 @@ STATICFILES_FINDERS = ("compressor.finders.CompressorFinder",)
 
 
 LOGIN_REDIRECT_URL = "core:home"
-LOGOUT_REDIRECT_URL = "users:login"
+LOGOUT_REDIRECT_URL = "users:logout"
