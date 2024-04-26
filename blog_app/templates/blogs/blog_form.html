@@ -13,7 +13,7 @@ New
         <div class="mb-4">
             <div class="flex">
                 {{ form.title.label_tag }}
-                <div class="border-2 w-fit">
+                <div class="border-2 w-fit ml-2">
                     {{ form.title }}
                 </div>
             </div>
@@ -33,6 +33,13 @@ New
             {{ form.image }}
             {% if form.image.errors %}
             <p class="text-red-500">{{ form.image.errors }}</p>
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{ form.tags.label_tag }}
+            {{ form.tags }}
+            {% if form.tags.errors %}
+            <p class="text-red-500">{{ form.tags.errors }}</p>
             {% endif %}
         </div>
         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">Save</button>

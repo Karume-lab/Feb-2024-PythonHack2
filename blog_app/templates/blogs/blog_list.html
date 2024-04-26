@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 
 {% block title %}
-Mine
+Blogs
 {% endblock title %}
 
 
@@ -31,6 +31,13 @@ Mine
         </div>
       </div>
     </a>
+    {% empty %}
+    <div class="flex items-center justify-center w-full h-full bg-gray-100">
+      <div class="text-center">
+        <p class="text-gray-600">Nothing here yet</p>
+        <img class="w-64 h-auto mt-4 mx-auto" src="{% static 'img/nothing.png' %}" alt="nothing">
+      </div>
+    </div>
     {% endfor %}
   </div>
 </div>
