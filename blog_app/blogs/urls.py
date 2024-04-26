@@ -18,4 +18,5 @@ urlpatterns = [
         views.CommentCreateView.as_view(),
         name="comment-create",
     ),
+    path('tag/<str:tag>/', views.FilteredBlogsByTagListView.as_view(), name='filtered-blogs-by-tag'),
 ]

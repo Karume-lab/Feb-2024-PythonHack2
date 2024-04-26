@@ -64,3 +64,18 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy("blogs:blog-detail", kwargs={"slug": self.kwargs["slug"]})
+
+
+class FilteredBlogsByTagListView(ListView):
+    model = models.Blog
+    template_name = "filtered_blogs.html"
+    context_object_name = "blogs"
+
+    def get_queryset(self):
+        tag = self.kwargs["tag"]
+        return models.Blog.objects.filter(tags__name=tag)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tag"] = self.kwargs["tag"]
+        return context
