@@ -1,12 +1,9 @@
-from django.shortcuts import render
-
-# Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from blogs import models
 
 def signup(request):
     if request.method == "POST":
@@ -22,3 +19,12 @@ def signup(request):
 
 class UserProfileView(LoginRequiredMixin, TemplateView):
     template_name = "registration/profile.html"
+
+
+class UserBlogsListView(LoginRequiredMixin, ListView):
+    model = models.Blog
+    template_name = "blogs/my_blogs.html"
+    context_object_name = "user_blogs"
+
+    def get_queryset(self):
+        return models.Blog.objects.filter(author=self.request.user)
