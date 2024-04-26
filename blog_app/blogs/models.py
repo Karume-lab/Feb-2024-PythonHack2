@@ -13,6 +13,7 @@ class Blog(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
     slug = models.SlugField(unique=True, max_length=150)
+    tags = models.ManyToManyField("blogs.Tag", related_name="blogs")
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
@@ -20,6 +21,13 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
 
 
 class Comment(models.Model):

@@ -22,3 +22,8 @@ class CommentAdmin(admin.ModelAdmin):
 @admin.register(models.Rating)
 class RatingAdmin(admin.ModelAdmin):
     list_display = ("blog", "user", "rating")
+
+
+@admin.register(models.Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ("name",)
