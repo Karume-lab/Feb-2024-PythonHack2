@@ -31,8 +31,12 @@ class BlogDetailView(LoginRequiredMixin, DetailView):
 class BlogCreateView(LoginRequiredMixin, CreateView):
     model = models.Blog
     template_name = "blogs/blog_form.html"
-    fields = ["title", "content", "image"]
+    fields = ["title", "content", "image", "tags"]
     success_url = reverse_lazy("blogs:blog-list")
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class BlogUpdateView(LoginRequiredMixin, UpdateView):

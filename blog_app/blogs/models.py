@@ -3,13 +3,14 @@ from django.utils import timezone
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+from django.templatetags.static import static
 
 
 class Blog(models.Model):
     title = models.CharField(max_length=100)
     content = RichTextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="media/blog_images/", null=True, blank=True)
+    image = models.ImageField(upload_to="blog_images/", default="blog_images/default_blog.jpg", null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
     slug = models.SlugField(unique=True, max_length=150)
