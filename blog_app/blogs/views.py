@@ -56,9 +56,11 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
     model = models.Comment
     template_name = "blogs/comment_form.html"
     fields = ["content"]
-    success_url = reverse_lazy("blogs:blog-list")
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         form.instance.blog = models.Blog.objects.get(slug=self.kwargs["slug"])
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("blogs:blog-detail", kwargs={"slug": self.kwargs["slug"]})
