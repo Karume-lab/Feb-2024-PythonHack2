@@ -1,27 +1,46 @@
 {% extends './../base.html' %}
 
 {% block content %}
-    <h1>{{ blog.title }}</h1>
-    <!-- Use safe filter to render rich text content -->
-    <div>{{ blog.content | safe }}</div>
-    <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
-    <p>Author: {{ blog.author }}</p>
-    <p>Created At: {{ blog.created_at }}</p>
-    <p>Updated At: {{ blog.updated_at }}</p>
-    
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-4">{{ blog.title }}</h1>
+    <div class="mb-4">
+        <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="w-full h-auto">
+    </div>
+    <div class="mb-4">
+        <p class="text-gray-600">Author: {{ blog.author }}</p>
+        <p class="text-gray-600">Created At: {{ blog.created_at }}</p>
+        <p class="text-gray-600">Updated At: {{ blog.updated_at }}</p>
+    </div>
+
     {% if request.user == blog.author %}
-        <a href="{% url 'blogs:blog-update' blog.slug %}">Edit</a>
-        <a href="{% url 'blogs:blog-delete' blog.slug %}">Delete</a>
+    <div class="mb-4">
+        <a href="{% url 'blogs:blog-update' blog.slug %}" class="mr-2 text-blue-500">Edit</a>
+        <a href="{% url 'blogs:blog-delete' blog.slug %}" class="text-red-500">Delete</a>
+    </div>
     {% endif %}
-    
-    <form action="{% url 'blogs:comment-create' blog.slug %}" method="post">
+
+    <h2 class="text-xl font-bold mb-4">Comments</h2>
+    <ul class="mb-4">
+        {% for comment in blog.comment_set.all %}
+        <li class="text-gray-800 mb-2">{{ comment.content }}</li>
+        {% endfor %}
+    </ul>
+
+    <form action="{% url 'blogs:comment-create' blog.slug %}" method="post" class="mb-4">
         {% csrf_token %}
-        <textarea name="content"></textarea>
-        <button type="submit">Add Comment</button>
+        <textarea name="content"
+            class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Add your comment"></textarea>
+        <button type="submit" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Add
+            Comment</button>
     </form>
-    <form action="{% url 'blogs:rating-create' blog.slug %}" method="post">
+
+    <form action="{% url 'blogs:rating-create' blog.slug %}" method="post" class="mb-4">
         {% csrf_token %}
-        <input type="number" name="rating" min="1" max="5">
-        <button type="submit">Rate</button>
+        <input type="number" name="rating" min="1" max="5"
+            class="w-16 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Rating">
+        <button type="submit" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Rate</button>
     </form>
+</div>
 {% endblock content %}
