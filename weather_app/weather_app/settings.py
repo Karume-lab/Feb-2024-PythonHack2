@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
+
+DJANGO_OPEN_WEATHER_APP_API_KEY = os.getenv('DJANGO_OPEN_WEATHER_APP_API_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "compressor",
     "livereload",
+    "core",
 ]
 
 MIDDLEWARE = [
@@ -130,4 +136,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 COMPRESS_ROOT = BASE_DIR / "static"
 COMPRESS_ENABLED = True
-STATICFILES_FINDERS = ("compressor.finders.CompressorFinder",)
+STATICFILES_FINDERS = (
+    "compressor.finders.CompressorFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+)
