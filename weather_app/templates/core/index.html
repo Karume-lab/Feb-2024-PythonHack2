@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-center">Hello</h1>
+    <span>{{day}}</span>
+    <span>{{description}}</span>
+    <span>{{temp}}</span>
+    <img src="https://api.openweathermap.org/img/w/{{icon}}.png" alt="">
+{% endblock content %}
