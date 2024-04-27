@@ -1,9 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 class="text-center">Hello</h1>
-    <span>{{day}}</span>
-    <span>{{description}}</span>
-    <span>{{temp}}</span>
-    <img src="https://api.openweathermap.org/img/w/{{icon}}.png" alt="">
+<div class="max-w-lg mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+    <h1 class="text-center text-3xl font-bold mb-4 text-orange-500">Weather Front</h1>
+    <form method="post" class="flex flex-col items-center">
+        {% csrf_token %}
+        <div class="flex items-center justify-center gap-2 bg-blue-400 px-4 pt-3 m-2 rounded-lg">
+            <label for="city" class="mb-2 text-gray-700 font-bold text-lg">CITY</label>
+            <input type="text" name="city" placeholder="{{city}}"
+            class="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+        </div>
+        <button type="submit"
+            class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-colors">Check
+            Weather</button>
+    </form>
+    {% if day %}
+    <div class="mt-8 text-center">
+        <h2>{{city}}</h2>
+        <span class="block text-xl font-semibold text-gray-800">{{ day }}</span>
+        <span class="block text-gray-600">{{ description }}</span>
+        <span class="block text-2xl font-bold text-blue-600">{{ temp }}</span>
+        <img src="https://api.openweathermap.org/img/w/{{ icon }}.png" alt="Weather Icon" class="mt-4 mx-auto">
+    </div>
+    {% endif %}
+</div>
 {% endblock content %}
